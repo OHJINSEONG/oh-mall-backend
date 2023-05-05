@@ -1,6 +1,7 @@
 package com.example.ohmall.models.vo;
 
 import com.example.ohmall.exceptions.InvalidPrice;
+import com.example.ohmall.models.vo.Product.Price;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,25 +19,4 @@ class PriceTest {
             Price price = new Price(-1000);
         });
     }
-
-    @Test
-    void updateWithValidPrice(){
-        Price price = new Price(1000);
-
-        price.update(2000);
-
-        assertThat(price.value()).isEqualTo(2000);
-    }
-
-    @Test
-    void updateWithInvalidPrice(){
-        Price price = new Price(1000);
-
-        assertThrows(InvalidPrice.class, () -> {
-            price.update(-1000);
-        });
-    }
 }
-
-
-// 가격검사 사람맞는지검사 상품수량 검사

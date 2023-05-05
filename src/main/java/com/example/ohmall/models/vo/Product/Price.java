@@ -1,4 +1,4 @@
-package com.example.ohmall.models.vo;
+package com.example.ohmall.models.vo.Product;
 
 import com.example.ohmall.exceptions.InvalidPrice;
 
@@ -7,9 +7,10 @@ import java.util.Objects;
 
 @Embeddable
 public class Price {
-    private Integer value;
+    private final Integer value;
 
-    public Price() {
+    protected Price() {
+        this.value = null;
     }
 
     public Price(int value) {
@@ -23,20 +24,8 @@ public class Price {
         return value;
     }
 
-    public void update(Integer value) {
-        if (isValidPrice(value)) {
-            throw new InvalidPrice(value);
-        }
-
-        this.value = value;
-    }
-
     private boolean isValidPrice(Integer value) {
         return value <= 0;
-    }
-
-    public void delete() {
-        this.value = null;
     }
 
     @Override

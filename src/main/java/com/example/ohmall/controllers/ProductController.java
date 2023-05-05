@@ -53,22 +53,21 @@ public class ProductController {
         return products;
     }
 
-    @ExceptionHandler(ProductNotFound.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String productNotFound(Exception exception) {
-        return exception.getMessage();
-    }
-    
-    @ExceptionHandler(CategoryNotFound.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String categoryNotFound(Exception exception) {
-        return exception.getMessage();
-    }
-
     @ExceptionHandler(InvalidPrice.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String invalidPrice(Exception exception) {
         return exception.getMessage();
     }
 
+    @ExceptionHandler(ProductNotFound.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String productNotFound(Exception exception) {
+        return exception.getMessage();
+    }
+
+    @ExceptionHandler(CategoryNotFound.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String categoryNotFound(Exception exception) {
+        return exception.getMessage();
+    }
 }
