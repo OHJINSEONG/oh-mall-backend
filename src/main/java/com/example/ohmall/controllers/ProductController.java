@@ -7,8 +7,8 @@ import com.example.ohmall.exceptions.CategoryNotFound;
 import com.example.ohmall.exceptions.InvalidPrice;
 import com.example.ohmall.exceptions.ProductNotFound;
 import com.example.ohmall.models.entity.Product;
-import com.example.ohmall.services.CategoryService;
 import com.example.ohmall.services.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("products")
 public class ProductController {
-    private ProductService productService;
-    private CategoryService categoryService;
+    private final ProductService productService;
 
-    public ProductController(ProductService productService, CategoryService categoryService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
-        this.categoryService = categoryService;
     }
 
     @GetMapping("{productId}")
+    @ApiOperation(value = "Find Product", notes = "find product by id")
     public ProductResultDto product(
             @PathVariable Long productId
     ) {
@@ -34,8 +33,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public ProductsDto list(
-            @RequestParam(required = false) Long categoryId,
+    @ApiOperation(value = "Fetch Products", notes = "fetch products by page and category")
+    public ProductsDto listByCategory(
+            @RequestParam(required = true) Long categoryId,
             @RequestParam(required = false, defaultValue = "1") Integer page
     ) {
         Page<Product> found = productService.list(categoryId, page);

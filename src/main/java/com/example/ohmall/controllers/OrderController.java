@@ -6,8 +6,8 @@ import com.example.ohmall.exceptions.InvalidPayment;
 import com.example.ohmall.exceptions.InvalidPrice;
 import com.example.ohmall.exceptions.ProductNotFound;
 import com.example.ohmall.models.entity.Order;
-import com.example.ohmall.models.vo.Payment;
 import com.example.ohmall.services.OrderService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +21,7 @@ public class OrderController {
     }
 
     @PostMapping
+    @ApiOperation(value = "Create Order", notes = "create order")
     public OrderResultDto order(
     ) {
         Order order = orderService.order(10001, 1L);
