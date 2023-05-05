@@ -1,7 +1,6 @@
 package com.example.ohmall.services;
 
 import com.example.ohmall.exceptions.CategoryNotFound;
-import com.example.ohmall.exceptions.InvalidName;
 import com.example.ohmall.exceptions.ProductNotFound;
 import com.example.ohmall.models.entity.Category;
 import com.example.ohmall.models.entity.Product;
@@ -14,23 +13,18 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Service
 @Transactional
 public class ProductService {
-    private ProductRepository productRepository;
-    private CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
 
-    @GetMapping
     public Page<Product> list(Long categoryId, int page) {
         Specification<Product> specification = ((root, query, criteriaBuilder) -> null);
 
