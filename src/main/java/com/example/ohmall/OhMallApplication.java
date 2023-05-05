@@ -15,6 +15,7 @@ public class OhMallApplication {
 		SpringApplication.run(OhMallApplication.class, args);
 	}
 	//http://localhost:8000/h2-console
+	//http://localhost:8000/swagger-ui/
 
 	@Bean
 	public WebSecurityCustomizer ignoringCustomizer() {

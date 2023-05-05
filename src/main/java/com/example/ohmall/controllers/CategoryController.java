@@ -3,6 +3,7 @@ package com.example.ohmall.controllers;
 import com.example.ohmall.dtos.CategoriesDto;
 import com.example.ohmall.models.entity.Category;
 import com.example.ohmall.services.CategoryService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class CategoryController {
     }
 
     @GetMapping
+    @ApiOperation(value = "Fetch Categories", notes = "fetch Categories")
     public CategoriesDto list() {
         List<Category> categories = categoryService.list();
 
