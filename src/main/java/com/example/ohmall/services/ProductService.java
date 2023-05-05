@@ -1,6 +1,7 @@
 package com.example.ohmall.services;
 
 import com.example.ohmall.exceptions.CategoryNotFound;
+import com.example.ohmall.exceptions.InvalidName;
 import com.example.ohmall.exceptions.ProductNotFound;
 import com.example.ohmall.models.entity.Category;
 import com.example.ohmall.models.entity.Product;
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 @Service
 @Transactional
 public class ProductService {
@@ -23,29 +27,24 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
-
         this.categoryRepository = categoryRepository;
     }
 
     @GetMapping
-    public Page<Product> list(Long categoryId,int page) {
+    public Page<Product> list(Long categoryId, int page) {
         Specification<Product> specification = ((root, query, criteriaBuilder) -> null);
 
-        if (categoryId == null) {
-            Category category = categoryRepository.findById(categoryId)
-                    .orElseThrow(CategoryNotFound::new);
-        }
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(CategoryNotFound::new);
 
         Sort sort = Sort.by("id").descending();
 
         Pageable pageable = PageRequest.of(page - 1, 8, sort);
 
-        Page<Product> products = productRepository.findAll(specification, pageable);
-
-        return products;
+        return productRepository.findAll(specification, pageable);
     }
 
     public Product find(Long productId) {
-       return productRepository.findById(productId).orElseThrow(ProductNotFound::new);
+        return productRepository.findById(productId).orElseThrow(ProductNotFound::new);
     }
 }
