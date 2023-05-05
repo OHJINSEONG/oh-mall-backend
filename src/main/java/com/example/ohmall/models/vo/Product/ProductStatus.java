@@ -1,4 +1,4 @@
-package com.example.ohmall.models.vo;
+package com.example.ohmall.models.vo.Product;
 
 public enum ProductStatus {
     ON_SALE("ON_SALE"),
@@ -15,5 +15,9 @@ public enum ProductStatus {
 
     public String value() {
         return status;
+    }
+
+    public boolean isSoldOut() {
+        return value().equals("SOLD_OUT");
     }
 }

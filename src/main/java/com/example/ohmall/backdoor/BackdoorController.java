@@ -23,13 +23,15 @@ public class BackdoorController {
         jdbcTemplate.execute("DELETE from product");
         jdbcTemplate.execute("DELETE from category");
 
-        jdbcTemplate.update("INSERT INTO " +
-                        "product(" +
-                        "id, category-id, product-name, price, description, status " +
-                        ", created_at, updated_at" +
-                        ") " +
-                        "VALUES(1, 1, '테스트', 10000, '싸다', 'CREATED' ?, ?)"
-                , LocalDateTime.now(), LocalDateTime.now());
+        for(int i = 1 ; i < 30 ; i +=1) {
+            jdbcTemplate.update("INSERT INTO " +
+                            "product(" +
+                            "id, category_id, product_name, price, description, image, status " +
+                            ", created_at, updated_at" +
+                            ") " +
+                            "VALUES(?, 1, ?, 10000, '엄청나게 향기로운 사기향수', 'https://user-images.githubusercontent.com/107606892/235420874-d03cf788-2fa3-464f-912a-b55185aa05ab.png' ,'ON_SALE', ?, ?)"
+                    ,i ,"테스트상품"+i ,LocalDateTime.now(), LocalDateTime.now());
+        }
 
         jdbcTemplate.update("INSERT INTO " +
                         "category(" +
@@ -40,5 +42,20 @@ public class BackdoorController {
 
 
         return "product";
+    }
+
+    @GetMapping("setup-users")
+    public String setupUsers() {
+        jdbcTemplate.execute("DELETE from user");
+
+        jdbcTemplate.update("INSERT INTO " +
+                        "user(" +
+                        "id, category_id, product_name, price, description, status " +
+                        ", created_at, updated_at" +
+                        ") " +
+                        "VALUES(1, 1, '테스트', 10000, '싸다', 'CREATED', ?, ?)"
+                , LocalDateTime.now(), LocalDateTime.now());
+
+        return "user";
     }
 }
