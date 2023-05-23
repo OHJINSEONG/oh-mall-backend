@@ -5,7 +5,9 @@ import com.example.ohmall.exceptions.LogInError;
 import com.example.ohmall.models.entity.Users;
 import com.example.ohmall.repositories.UserRepository;
 import com.example.ohmall.utils.JwtUtil;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogInService {
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
