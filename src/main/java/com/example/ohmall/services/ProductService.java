@@ -6,6 +6,7 @@ import com.example.ohmall.models.entity.Category;
 import com.example.ohmall.models.entity.Product;
 import com.example.ohmall.repositories.CategoryRepository;
 import com.example.ohmall.repositories.ProductRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ public class ProductService {
         this.categoryRepository = categoryRepository;
     }
 
+    @Cacheable(cacheNames = "productCache", key = "#categoryId + '-' + #page")
     public Page<Product> list(Long categoryId, int page) {
         Specification<Product> specification = ((root, query, criteriaBuilder) -> null);
 
