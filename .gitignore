@@ -38,4 +38,3 @@ out/
 
 .gradle/
 .idea/
-!**/src/main/application.env
