@@ -1,4 +1,4 @@
-package com.example.ohmall.configuration;
+package com.example.ohmall.configurations;
 
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
