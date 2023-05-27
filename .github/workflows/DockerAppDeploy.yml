@@ -4,12 +4,10 @@ on:
   pull_request:
     branches:
       - main
-    types: [ closed ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
 
     steps:
     - name: checkout release
@@ -29,9 +27,11 @@ jobs:
       run: aws s3 cp --region ap-northeast-2 ./oh-mall-backend.tar.gz s3://oh-mall-bucket/oh-mall-folder/
 
     - name: deploy with AWS codeDeploy
-      run: aws deploy create-deployment
-        --application-name oh-mall-backend
-        --deployment-config-name CodeDeployDefault.AllAtOnce
-        --deployment-group-name oh-mall-backend-group
-        --s3-location bucket=oh-mall-bucket,bundleType=tgz,key=oh-mall-folder/oh-mall-backend.tar.gz
+      run: aws deploy \
+          --region ap-northeast-2 \
+        create-deployment \
+          --application-name oh-mall-backend \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --deployment-group-name oh-mall-backend-group \
+          --s3-location bucket=oh-mall-bucket,bundleType=tgz,key=oh-mall-folder/oh-mall-backend.tar.gz
         
