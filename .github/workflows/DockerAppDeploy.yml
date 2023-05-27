@@ -28,10 +28,10 @@ jobs:
 
     - name: deploy with AWS codeDeploy
       run: aws deploy \
-          --region ap-northeast-2 \
-        create-deployment \
-          --application-name oh-mall-backend \
-          --deployment-config-name CodeDeployDefault.AllAtOnce \
-          --deployment-group-name oh-mall-backend-group \
-          --s3-location bucket=oh-mall-bucket,bundleType=tgz,key=oh-mall-folder/oh-mall-backend.tar.gz
+      --region ap-northeast-2 \
+      create-deployment \
+      --application-name oh-mall-backend \
+      --deployment-config-name CodeDeployDefault.AllAtOnce \
+      --deployment-group-name oh-mall-backend-group \
+      --s3-location bucket=oh-mall-bucket,bundleType=tgz,key=oh-mall-folder/oh-mall-backend.tar.gz
         
