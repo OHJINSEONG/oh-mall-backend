@@ -18,22 +18,26 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgreSQL&logoColor=white"/>
 <br>
 
+### 백엔드 프로젝트 문제 해결
+
 <br>
 
 ## Jmeter와 로컬 캐싱을 사용한 조회 성능 개선
 
+구현 이슈
+
 - 변경이 자주 발생되지 않는 리소스의 조회 요청 성능을 개선하기 위해 로컬 캐시 적용
 
-결과
+해결
 
 - Jmeter를 이용해 부하테스트 작성 → 상품리소스에 대한 **10만번의 http GET요청**을 발생시키는 부하 발생
 - EhCache를 이용해 **로컬캐시를 적용**하여 수업 조회 평균 속도 **4000% 향상(555ms → 14ms)**
 
-![캐시 적용전]<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/922b9b85-2830-41ae-b5ad-419a06cd3373/Untitled.png">
+<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/922b9b85-2830-41ae-b5ad-419a06cd3373/Untitled.png">
 
 캐시 적용전
 
-![캐시 적용후]<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0fb70a67-61a4-42c4-aa78-f517ab955cee/Untitled.png">
+<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0fb70a67-61a4-42c4-aa78-f517ab955cee/Untitled.png">
 
 캐시 적용후
 
@@ -55,6 +59,8 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 <br>
 
+
+
 ## 값객체를 이용한 예외처리
 
 - 엔티티내의 필드중에서 연관된 것을 찾아 값객체로 분리.
@@ -71,6 +77,8 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 <br>
 
+
+
 ## Backdoor API를 이용한 데이터 시딩작업 자동화
 
 - jdbcTemplate을 이용하여 인수테스트의 명세에 적힌 데이터 세팅 자동화
@@ -83,4 +91,27 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 해결
 
 - JdbcTemplate을 이용해 유저스토리별로 필요한 데이터 시딩 모듈화
+- 데이터 시딩 작업 효율 2000% 증가 (기존 20분 → 1분)
+
+<br>
+
+
+
+### DevOps
+
+## 목적에 맞는 호스팅 서버 사용
+
+- 단일 서버 프로젝트를 호스팅하는데 적합하고 Docker를 이용하여 직접 구축할수 있는 AWS EC2 사용
+
+
+
+## Https 적용
+
+- Http프로토콜을 이용한 데이터 전달은 보안에 취약하다는 단점이 있기 때문에 lets'encrypt에서 ssl 인증서와 개인키를 발급받아 Https 적용
+
+
+
+## CI/CD 파이프라인 구현
+
+- 작은 기능 단위 커밋을 지향하고 있기 때문에 테스트 비용을 줄이기 위하여 테스트 자동화 파이프라인을 구축
 
