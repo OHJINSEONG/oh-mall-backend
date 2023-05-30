@@ -1,7 +1,7 @@
-# OhGym-backend
+# OhMall-backend
 
 ## 프로젝트 소개
-OhGym은 간단하게 PT,락커 신청을 할수있고 운동일지를 쉽게 관리 할 수 있는 개인 프랜차이징 헬스장 관리 서비스입니다.
+OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 ### 배포 URL
 
@@ -29,11 +29,11 @@ OhGym은 간단하게 PT,락커 신청을 할수있고 운동일지를 쉽게 �
 - Jmeter를 이용해 부하테스트 작성 → 상품리소스에 대한 **10만번의 http GET요청**을 발생시키는 부하 발생
 - EhCache를 이용해 **로컬캐시를 적용**하여 수업 조회 평균 속도 **4000% 향상(555ms → 14ms)**
 
-![캐시 적용전](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/922b9b85-2830-41ae-b5ad-419a06cd3373/Untitled.png)
+![캐시 적용전]<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/922b9b85-2830-41ae-b5ad-419a06cd3373/Untitled.png">
 
 캐시 적용전
 
-![캐시 적용후](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0fb70a67-61a4-42c4-aa78-f517ab955cee/Untitled.png)
+![캐시 적용후]<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0fb70a67-61a4-42c4-aa78-f517ab955cee/Untitled.png">
 
 캐시 적용후
 
