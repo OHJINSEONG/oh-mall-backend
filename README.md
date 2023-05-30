@@ -11,7 +11,7 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 ## 기술 스택
 ### Backend
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"></a>
+<img width="50px" src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"></a>
 <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
 
 ### Database
@@ -33,11 +33,11 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 - Jmeter를 이용해 부하테스트 작성 → 상품리소스에 대한 **10만번의 http GET요청**을 발생시키는 부하 발생
 - EhCache를 이용해 **로컬캐시를 적용**하여 수업 조회 평균 속도 **4000% 향상(555ms → 14ms)**
 
-<img src="https://github.com/OHJINSEONG/oh-mall-backend/assets/107606892/86cbe8c6-b7b3-4f89-a215-2269356845ab">
+<img style="width:400px" src="https://github.com/OHJINSEONG/oh-mall-backend/assets/107606892/86cbe8c6-b7b3-4f89-a215-2269356845ab">
 
 캐시 적용전
 
-<img src="https://github.com/OHJINSEONG/oh-mall-backend/assets/107606892/eedbd25d-5de3-42ec-adcb-1fc55afca2fc">
+<img style="width:400px" src="https://github.com/OHJINSEONG/oh-mall-backend/assets/107606892/eedbd25d-5de3-42ec-adcb-1fc55afca2fc">
 
 캐시 적용후
 
