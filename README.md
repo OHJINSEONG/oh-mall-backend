@@ -5,7 +5,7 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 ### 배포 URL
 
-- [https://oh-mall.shop.8000](https://oh-mall.shop.8000)
+- [https://oh-mall.shop:8000](https://oh-mall.shop:8000)
 
 <br>
 
