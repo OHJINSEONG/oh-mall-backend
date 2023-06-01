@@ -24,7 +24,7 @@ public class OrderController {
     @ApiOperation(value = "Create Order", notes = "create order")
     public OrderResultDto order(
     ) {
-        Order order = orderService.order(10001, 1L);
+        Order order = orderService.order(3, 1L, 100001);
 
         return order.toDto();
     }
