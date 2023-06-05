@@ -2,10 +2,9 @@ package com.example.ohmall.models.entity;
 
 import com.example.ohmall.dtos.OrderResultDto;
 import com.example.ohmall.exceptions.InvalidPayment;
-import com.example.ohmall.models.vo.Payment;
+import com.example.ohmall.models.vo.Money;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ORDERS")
@@ -16,29 +15,32 @@ public class Order {
 
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "payment"))
-    private Payment payment;
+    private Money orderPrice;
+
+    private int quantity;
 
     public Order() {
     }
 
-    public Order(Payment payment) {
-        this.payment = payment;
+    public Order(int quantity, Money orderPrice) {
+        this.quantity = quantity;
+        this.orderPrice = orderPrice;
     }
 
-    public static Order of(Product product, int payment) {
-        if (!Objects.equals(payment, product.price().value())) {
-            throw new InvalidPayment("Invalid payment information.");
-        }
-
-        if(product.isSoldOut()) {
+    public static Order of(Product product, int quantity, int productPrice) {
+        if (product.isSoldOut()) {
             throw new InvalidPayment("Product is SoldOut.");
         }
 
-        return new Order(new Payment(payment));
+        Money money = product.calculatePrice(quantity, productPrice);
+
+        Order order = new Order(quantity, money);
+
+        return order;
     }
 
     public OrderResultDto toDto() {
-        return new OrderResultDto(payment.value());
+        return new OrderResultDto(orderPrice.value());
     }
 
     public Long id() {

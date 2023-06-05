@@ -1,6 +1,8 @@
 package com.example.ohmall.models.entity;
 
 import com.example.ohmall.dtos.ProductResultDto;
+import com.example.ohmall.exceptions.InvalidPayment;
+import com.example.ohmall.models.vo.Money;
 import com.example.ohmall.models.vo.Product.Price;
 import com.example.ohmall.models.vo.Product.ProductStatus;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -59,5 +62,15 @@ public class Product {
 
     public Long id() {
         return id;
+    }
+
+    public Money calculatePrice(int quantity, int productPrice) {
+        if (!Objects.equals(productPrice, price.value())) {
+            throw new InvalidPayment("Invalid payment information.");
+        }
+
+        Money money = new Money(price.value());
+
+        return money.multiple(quantity);
     }
 }

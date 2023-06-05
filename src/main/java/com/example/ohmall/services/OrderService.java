@@ -20,7 +20,7 @@ public class OrderService {
     public OrderService() {
     }
 
-    public Order order(int payment, Long productId) {
+    public Order order(int quantity, Long productId, int productPrice) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
@@ -28,7 +28,7 @@ public class OrderService {
         try {
             Product product = entityManager.find(Product.class, productId);
 
-            Order order = Order.of(product, payment);
+            Order order = Order.of(product,quantity,productPrice);
 
             entityManager.persist(order);
 
