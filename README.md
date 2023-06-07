@@ -7,6 +7,10 @@ OhMall은 개인 프랜차이징 쇼핑몰 프로젝트 입니다.
 
 - [https://oh-mall.shop:8000](https://oh-mall.shop:8000)
 
+### API 명세
+
+- [https://oh-mall.shop:8000/swagger-ui/](https://oh-mall.shop:8000/swagger-ui/)
+
 <br>
 
 ## 기술 스택
